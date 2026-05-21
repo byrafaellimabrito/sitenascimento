@@ -795,7 +795,21 @@
       align-items: center;
       justify-content: flex-start;
     }
-    .diff-card .emoji { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .diff-icon {
+      width: 3rem;
+      height: 3rem;
+      margin: 0 auto 1rem;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      color: var(--primary);
+    }
+    .diff-icon .material-symbols-outlined {
+      font-size: 1.65rem;
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
     .diff-card h3 { margin: 0 0 0.5rem; font-size: 0.95rem; color: var(--branco); font-family: var(--fonte-display); }
     .diff-card p { margin: 0; font-size: 0.82rem; color: var(--secondary); }
 
@@ -1331,6 +1345,60 @@
       .nav-toggle { display: grid !important; }
     }
 
+    .cookie-banner {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9998;
+      padding: 1rem var(--pad-x) max(1rem, env(safe-area-inset-bottom));
+      background: rgba(2, 6, 23, 0.96);
+      border-top: 1px solid var(--border-subtle);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.45);
+    }
+    .cookie-banner[hidden] { display: none !important; }
+    .cookie-banner__inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem 1.5rem;
+    }
+    .cookie-banner p {
+      margin: 0;
+      flex: 1 1 220px;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: var(--secondary);
+    }
+    .cookie-link {
+      padding: 0;
+      border: none;
+      background: none;
+      color: var(--primary);
+      font-size: inherit;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .cookie-link:hover { color: var(--branco); }
+    .cookie-accept {
+      flex-shrink: 0;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.72rem;
+    }
+    body.has-cookie-banner .whatsapp-float {
+      bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    }
+    @media (max-width: 599px) {
+      .cookie-banner__inner { flex-direction: column; align-items: stretch; }
+      .cookie-accept { width: 100%; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -1388,7 +1456,7 @@
             <a class="btn-secundario" href="#sobre">Conheça o escritório</a>
           </div>
           <div class="hero-badges">
-            <span>OAB/BA 73.621</span>
+            <span>+15 anos de experiência</span>
             <span>+3.000 clientes atendidos</span>
             <span>Atuação em todo o Brasil</span>
           </div>
@@ -1524,30 +1592,30 @@
         <div class="about-grid">
           <div class="about-photo reveal about-photo-col">
             <img src="./dr-wellington.jpg?v=2" alt="Dr. Wellington Nascimento de Jesus, advogado" width="600" height="720" loading="lazy" decoding="async">
-            <div class="cred">Dr. Wellington Nascimento de Jesus · OAB/BA 73.621</div>
+            <div class="cred">Dr. Wellington Nascimento de Jesus</div>
           </div>
           <div class="about-text reveal">
             <p class="section-kicker">Nossa história</p>
             <h2>Nascimento Advogados Associados</h2>
             <p>Fundado em Santo Antônio de Jesus — BA, o escritório nasceu com uma missão clara: tornar a Justiça acessível ao trabalhador brasileiro.</p>
-            <p>Sob a liderança do Dr. Wellington Nascimento de Jesus (OAB/BA 73.621), nossa equipe atua estrategicamente em toda a Bahia e em todo o território nacional, com foco absoluto no Direito Previdenciário e Trabalhista.</p>
+            <p>Sob a liderança do Dr. Wellington Nascimento de Jesus, nossa equipe atua estrategicamente em toda a Bahia e em todo o território nacional, com foco absoluto no Direito Previdenciário e Trabalhista.</p>
             <p>Nosso método combina profundo conhecimento técnico, uso de tecnologia jurídica avançada e acolhimento humano genuíno.</p>
             <blockquote class="inst-quote" cite="#sobre">“Nossa missão é transformar direitos teóricos em dignidade real.”<br>— Dr. Wellington Nascimento</blockquote>
           </div>
         </div>
         <div class="diff-grid">
           <div class="diff-card reveal">
-            <div class="emoji" aria-hidden="true">🏛️</div>
+            <div class="diff-icon" aria-hidden="true"><span class="material-symbols-outlined">query_stats</span></div>
             <h3>Tecnologia jurídica</h3>
             <p>Ferramentas modernas para triagem, organização processual e acompanhamento ágil do seu caso.</p>
           </div>
           <div class="diff-card reveal">
-            <div class="emoji" aria-hidden="true">📍</div>
+            <div class="diff-icon" aria-hidden="true"><span class="material-symbols-outlined">public</span></div>
             <h3>Presença regional</h3>
             <p>Atuação na Bahia e nos demais estados, com metodologia remota estruturada.</p>
           </div>
           <div class="diff-card reveal">
-            <div class="emoji" aria-hidden="true">🤝</div>
+            <div class="diff-icon" aria-hidden="true"><span class="material-symbols-outlined">handshake</span></div>
             <h3>Atendimento humanizado</h3>
             <p>Do primeiro contato à sentença, estamos ao seu lado com clareza e respeito.</p>
           </div>
@@ -1728,12 +1796,13 @@
       </div>
     </div>
     <div class="footer-bottom">
-      © 2026 Nascimento Advogados Associados · CNPJ 49.898.525/0001-85 · OAB/BA 73.621
+      © 2026 Nascimento Advogados Associados · CNPJ 49.898.525/0001-85
     </div>
   </footer>
 
   <div id="priv-policy-source" hidden>
-    <p>O Nascimento Advogados Associados trata dados pessoais fornecidos por formulário ou WhatsApp exclusivamente para contato, análise preliminar e prestação de serviços advocatícios, em conformidade com a LGPD (Lei nº 13.709/2018). Não vendemos nem compartilhamos seus dados com terceiros para fins comerciais. Você pode solicitar correção ou eliminação de dados entrando em contato pelos canais indicados nesta página.</p>
+    <p>O Nascimento Advogados Associados trata dados pessoais fornecidos por formulário ou WhatsApp exclusivamente para contato, análise preliminar e prestação de serviços advocatícios, em conformidade com a LGPD (Lei nº 13.709/2018). Não vendemos nem compartilhamos seus dados com terceiros para fins comerciais.</p>
+    <p>Utilizamos cookies essenciais e armazenamento local no navegador para lembrar preferências (como o aceite desta política) e garantir o funcionamento do site. Você pode solicitar correção ou eliminação de dados entrando em contato pelos canais indicados nesta página.</p>
   </div>
 
   <div id="modal-privacidade" class="privacy-modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-priv-title">
@@ -1745,6 +1814,13 @@
         <button type="button" class="btn-fechar" data-close-privacy="1">Fechar</button>
         <button type="button" class="btn-primario gold-gradient btn-aceitar-privacy" id="btn-aceitar-privacidade"><span>Aceito</span></button>
       </div>
+    </div>
+  </div>
+
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-live="polite" hidden>
+    <div class="cookie-banner__inner">
+      <p id="cookie-title">Este site utiliza cookies essenciais para funcionamento e melhoria da experiência, em conformidade com a LGPD. Ao continuar, você concorda com nossa <button type="button" class="cookie-link" id="cookie-open-privacy">Política de Privacidade</button>.</p>
+      <button type="button" class="btn-primario gold-gradient cookie-accept" id="cookie-accept"><span>Aceitar cookies</span></button>
     </div>
   </div>
 
@@ -1886,6 +1962,39 @@
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && modalPriv && !modalPriv.hasAttribute("hidden")) closePrivacyModal();
       });
+
+      var cookieBanner = document.getElementById("cookie-banner");
+      var cookieAccept = document.getElementById("cookie-accept");
+      var cookieOpenPriv = document.getElementById("cookie-open-privacy");
+      var COOKIE_KEY = "nascimento-cookies-aceitos";
+
+      function hideCookieBanner() {
+        if (!cookieBanner) return;
+        cookieBanner.setAttribute("hidden", "");
+        document.body.classList.remove("has-cookie-banner");
+      }
+      function showCookieBanner() {
+        if (!cookieBanner) return;
+        cookieBanner.removeAttribute("hidden");
+        document.body.classList.add("has-cookie-banner");
+      }
+
+      try {
+        if (cookieBanner && !localStorage.getItem(COOKIE_KEY)) showCookieBanner();
+        else hideCookieBanner();
+      } catch (err) {
+        hideCookieBanner();
+      }
+
+      if (cookieAccept) {
+        cookieAccept.addEventListener("click", function () {
+          try { localStorage.setItem(COOKIE_KEY, "1"); } catch (e) {}
+          hideCookieBanner();
+        });
+      }
+      if (cookieOpenPriv) {
+        cookieOpenPriv.addEventListener("click", openPrivacyModal);
+      }
 
       if (form) {
         form.addEventListener("submit", function (e) {
