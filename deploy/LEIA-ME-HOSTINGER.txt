@@ -1,0 +1,39 @@
+NASCIMENTO ADVOGADOS — Deploy na Hostinger
+==========================================
+
+CONTEUDO DESTA PASTA
+--------------------
+Envie TODOS os arquivos desta pasta (dist) para a hospedagem.
+Nao envie a pasta "dist" em si — envie o que esta DENTRO dela.
+
+Arquivos principais:
+- index.html          (pagina do site)
+- hero.jpg, dr-wellington.jpg, logo-cutout.png, favicon.png, whatsapp.png
+- reel-*.jpg          (capas dos videos do Instagram)
+- assets/             (copias de apoio das imagens)
+- .htaccess           (configuracao Apache da Hostinger)
+
+PASSO A PASSO NA HOSTINGER
+---------------------------
+1. Acesse hPanel > Sites > Gerenciar > Arquivos > Gerenciador de arquivos
+2. Abra a pasta public_html (raiz do dominio)
+3. Apague arquivos antigos de teste, se houver (index.html antigo, etc.)
+4. Faca upload de TODOS os arquivos desta pasta dist para public_html
+5. Confirme que index.html esta diretamente em public_html (nao dentro de subpasta)
+6. Acesse seu dominio no navegador e teste
+
+DOMINIO
+-------
+Se o dominio for nascimentoadvogados.com.br, a URL sera:
+https://nascimentoadvogados.com.br/
+
+SSL
+---
+Em hPanel > SSL, ative o certificado gratuito (Let's Encrypt) para HTTPS.
+
+ATUALIZAR O SITE DEPOIS
+-----------------------
+1. Rode build-dist.ps1 na pasta do projeto (gera dist novamente)
+2. Suba apenas os arquivos alterados para public_html na Hostinger
+
+Suporte Hostinger: https://www.hostinger.com.br/tutoriais
