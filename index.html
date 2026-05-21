@@ -1246,22 +1246,22 @@
 
     .whatsapp-float {
       position: fixed;
-      bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
-      right: max(1.25rem, env(safe-area-inset-right, 0px));
+      bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+      right: max(1rem, env(safe-area-inset-right, 0px));
       z-index: 9999;
-      width: 56px;
-      height: 56px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       display: grid;
       place-items: center;
       transition: transform var(--transition);
-      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+      filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
     }
-    .whatsapp-float:hover { transform: scale(1.08) rotate(3deg); }
-    .whatsapp-float img { width: 56px; height: 56px; object-fit: contain; }
+    .whatsapp-float:hover { transform: scale(1.06) rotate(2deg); }
+    .whatsapp-float img { width: 44px; height: 44px; object-fit: contain; }
     .pulse-ring {
       position: absolute;
-      inset: -4px;
+      inset: -3px;
       border-radius: 50%;
       border: 2px solid #25d366;
       animation: pulseRing 2s ease-out infinite;
@@ -2020,7 +2020,7 @@
 
   <a href="https://wa.me/5575988598240" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
     <span class="pulse-ring" aria-hidden="true"></span>
-    <img src="./whatsapp.png?v=2" width="56" height="56" alt="">
+    <img src="./whatsapp.png?v=2" width="44" height="44" alt="">
   </a>
 
   <script>
