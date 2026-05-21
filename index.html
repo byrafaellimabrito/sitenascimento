@@ -818,28 +818,118 @@
       grid-template-columns: 1fr;
       align-items: stretch;
     }
-    @media (min-width: 768px) { .cases-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
+    @media (min-width: 768px) {
+      .cases-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    }
     .case-card {
       display: flex;
       flex-direction: column;
       height: 100%;
-      background: var(--surface);
-      padding: clamp(1.5rem, 3vw, 1.75rem);
+      background: linear-gradient(165deg, rgba(30, 41, 59, 0.55) 0%, var(--surface) 45%);
+      padding: clamp(1.35rem, 3vw, 1.65rem);
       border: 1px solid var(--border-subtle);
-      border-top: 3px solid var(--primary);
       border-radius: var(--radius);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
     }
-    .case-card .stars { margin-top: auto; padding-top: 0.75rem; }
+    .case-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+    }
+    .case-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212, 175, 55, 0.35);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+    .case-card__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .case-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      color: var(--primary);
+    }
+    .case-icon .material-symbols-outlined { font-size: 1.45rem; }
     .case-card .tag {
-      font-size: 0.68rem;
+      font-size: 0.62rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       color: var(--primary);
       font-weight: 700;
+      padding: 0.35rem 0.65rem;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.06);
     }
-    .case-card h3 { margin: 0.5rem 0; font-size: 1.05rem; font-family: var(--fonte-display); color: var(--branco); }
-    .case-card .meta { font-size: 0.85rem; color: var(--secondary); }
-    .stars { color: var(--primary); letter-spacing: 2px; margin-top: 0.75rem; }
+    .case-card h3 {
+      margin: 0 0 0.85rem;
+      font-size: 1.08rem;
+      font-family: var(--fonte-display);
+      color: var(--branco);
+      line-height: 1.35;
+    }
+    .case-highlights {
+      list-style: none;
+      margin: 0 0 1rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .case-highlights li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--secondary);
+      line-height: 1.45;
+    }
+    .case-highlights .material-symbols-outlined {
+      font-size: 1.05rem;
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+    .case-card .meta {
+      font-size: 0.82rem;
+      color: rgba(148, 163, 184, 0.85);
+      line-height: 1.55;
+      margin: 0;
+      flex: 1;
+    }
+    .case-result {
+      margin-top: 1.15rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+    }
+    .case-result .material-symbols-outlined {
+      font-size: 1.15rem;
+      font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
 
     .coverage-layout {
       display: grid;
@@ -1623,22 +1713,52 @@
         <p class="section-lead reveal">Exemplos de resultados obtidos — sem identificação de clientes, em respeito ao sigilo profissional.</p>
         <div class="cases-grid">
           <article class="case-card reveal">
-            <span class="tag">Previdenciário</span>
+            <div class="case-card__head">
+              <div class="case-icon" aria-hidden="true"><span class="material-symbols-outlined">elderly</span></div>
+              <span class="tag">Previdenciário</span>
+            </div>
             <h3>Aposentadoria por tempo de contribuição</h3>
-            <p class="meta">Resolução em cerca de 8 meses · valor do benefício corrigido e majorado após recurso.</p>
-            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <ul class="case-highlights">
+              <li><span class="material-symbols-outlined" aria-hidden="true">schedule</span> Resolução em cerca de 8 meses</li>
+              <li><span class="material-symbols-outlined" aria-hidden="true">payments</span> Valor corrigido e majorado após recurso</li>
+            </ul>
+            <p class="meta">Planejamento previdenciário e atuação em recurso administrativo para garantir o melhor valor de benefício.</p>
+            <div class="case-result">
+              <span class="material-symbols-outlined" aria-hidden="true">verified</span>
+              <span>Benefício concedido</span>
+            </div>
           </article>
           <article class="case-card reveal">
-            <span class="tag">Auxílio-doença</span>
+            <div class="case-card__head">
+              <div class="case-icon" aria-hidden="true"><span class="material-symbols-outlined">medical_services</span></div>
+              <span class="tag">Auxílio-doença</span>
+            </div>
             <h3>Perícia e restabelecimento</h3>
-            <p class="meta">Cessação indevida revertida · retorno dos pagamentos com atrasados.</p>
-            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <ul class="case-highlights">
+              <li><span class="material-symbols-outlined" aria-hidden="true">gavel</span> Cessação indevida revertida</li>
+              <li><span class="material-symbols-outlined" aria-hidden="true">account_balance_wallet</span> Retorno dos pagamentos com atrasados</li>
+            </ul>
+            <p class="meta">Acompanhamento de perícia médica e defesa contra indeferimento do INSS com restabelecimento do benefício.</p>
+            <div class="case-result">
+              <span class="material-symbols-outlined" aria-hidden="true">verified</span>
+              <span>Pagamentos restabelecidos</span>
+            </div>
           </article>
           <article class="case-card reveal">
-            <span class="tag">BPC / LOAS</span>
+            <div class="case-card__head">
+              <div class="case-icon" aria-hidden="true"><span class="material-symbols-outlined">volunteer_activism</span></div>
+              <span class="tag">BPC / LOAS</span>
+            </div>
             <h3>Negação administrativa</h3>
-            <p class="meta">Judicial em menos de 12 meses · concessão do benefício com retroativos.</p>
-            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <ul class="case-highlights">
+              <li><span class="material-symbols-outlined" aria-hidden="true">schedule</span> Conclusão judicial em menos de 12 meses</li>
+              <li><span class="material-symbols-outlined" aria-hidden="true">history</span> Concessão com valores retroativos</li>
+            </ul>
+            <p class="meta">Ação judicial após negativa no INSS, com documentação e estratégia voltadas à vulnerabilidade do segurado.</p>
+            <div class="case-result">
+              <span class="material-symbols-outlined" aria-hidden="true">verified</span>
+              <span>Benefício judicial concedido</span>
+            </div>
           </article>
         </div>
       </div>
